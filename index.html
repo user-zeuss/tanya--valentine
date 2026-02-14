@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Tanya ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #0f172a, #1e293b);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.section {
+    padding: 60px 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+.slideshow {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+}
+
+.slideshow img {
+    width: 100%;
+    border-radius: 15px;
+    display: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.play-btn {
+    background: #3b82f6;
+    color: white;
+}
+
+.play-btn:hover {
+    background: #2563eb;
+}
+
+.yes-btn {
+    background: #10b981;
+    color: white;
+}
+
+.yes-btn:hover {
+    background: #059669;
+}
+
+.no-btn {
+    background: #ef4444;
+    color: white;
+    position: relative;
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+    <h1>Mumbai 🇮🇳 → Cardiff 🇬🇧</h1>
+    <p>Since 23 september 2021</p>
+    <p id="days"></p>
+</div>
+
+<div class="section slideshow">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+    <img src="photo5.jpg">
+    <img src="photo6.jpg">
+    <img src="photo7.jpg">
+    <img src="photo8.jpg">
+</div>
+
+<div class="section">
+    <button class="play-btn" onclick="playMusic()">Play Our Song 🎹</button>
+</div>
+
+<div class="section">
+    <h2>Pookie, will you be my valentine? 💍</h2>
+    <button class="yes-btn" onclick="showLove()">YES 💖</button>
+    <button class="no-btn" id="noButton">No 🙃</button>
+</div>
+
+<audio id="lalaland" src="lalaland.mp3"></audio>
+<audio id="perfect" src="perfect.mp3"></audio>
+
+<script>
+const startDate = new Date("2021-01-23");
+const today = new Date();
+const diffTime = today - startDate;
+const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+document.getElementById("days").innerText = diffDays + " days of us ❤️";
+
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slideshow img");
+
+function showSlides() {
+    slides.forEach(slide => slide.style.display = "none");
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 3000);
+}
+showSlides();
+
+function playMusic() {
+    const lala = document.getElementById("lalaland");
+    const perfect = document.getElementById("perfect");
+
+    lala.play();
+
+    setTimeout(() => {
+        lala.pause();
+        perfect.play();
+    }, 20000);
+}
+
+function showLove() {
+    alert("Every distance. Every city. Every lifetime. I choose you. ❤️");
+}
+
+const noBtn = document.getElementById("noButton");
+
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+});
+</script>
+
+</body>
+</html>
